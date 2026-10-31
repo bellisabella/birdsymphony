@@ -4,6 +4,7 @@ import { AudioLines, CheckCircle2, Film, Sparkles, Upload, X, Volume2 } from 'lu
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/utils'
+import { AudioParticleSphere } from '@/components/audio-particle-sphere'
 
 const ACCEPTED_TYPES = ['video/mp4', 'video/quicktime', 'video/webm']
 const ACCEPTED_EXTENSIONS = ['.mp4', '.mov', '.webm']
@@ -279,8 +280,9 @@ export function VideoUpload() {
                   ))}
                   <p className="text-xs text-muted-foreground">{audioReady ? '音频分析已连接 · 播放视频以查看实时变化' : '点击视频播放，启动浏览器本地音频分析'}</p>
                 </div>
+                <AudioParticleSphere bass={levels.bass} mid={levels.mid} treble={levels.treble} active={audioReady && isPlaying} />
                 <ol className="mt-4 flex flex-col gap-3">
-                  {[{ icon: Film, label: '读取视频', hint: 'Reading video', done: true }, { icon: AudioLines, label: '分析音频', hint: 'Analyzing audio', done: audioReady }, { icon: Sparkles, label: '生成声音宇宙', hint: '3D visualization · 下一步', done: false }].map((step) => (
+                  {[{ icon: Film, label: '读取视频', hint: 'Reading video', done: true }, { icon: AudioLines, label: '分析音频', hint: 'Analyzing audio', done: audioReady }, { icon: Sparkles, label: '生成声音宇宙', hint: 'Audio-reactive particle sphere', done: true }].map((step) => (
                     <li key={step.label} className="flex items-center gap-4 rounded-2xl border border-border/70 bg-background/40 px-4 py-3">
                       <span className={cn('flex size-9 items-center justify-center rounded-full', step.done ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground')}><step.icon className="size-4" aria-hidden="true" /></span>
                       <div className="flex-1"><p className="text-sm">{step.label}</p><p className="text-xs text-muted-foreground">{step.hint}</p></div>

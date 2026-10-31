@@ -104,3 +104,41 @@
     scroll-behavior: auto !important;
   }
 }
+
+.atlas-map.leaflet-container {
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+.atlas-map .leaflet-tile-pane {
+  filter: hue-rotate(95deg) saturate(0.6) brightness(0.95);
+}
+.atlas-map .leaflet-control-attribution {
+  background: color-mix(in oklch, var(--background) 80%, transparent);
+  color: var(--muted-foreground);
+  font-size: 10px;
+}
+.atlas-map .leaflet-control-attribution a {
+  color: var(--muted-foreground);
+}
+.atlas-map .leaflet-control-zoom a {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.atlas-tooltip.leaflet-tooltip {
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 12px;
+  box-shadow: 0 10px 30px -10px var(--glow);
+}
+.atlas-tooltip.leaflet-tooltip-top::before {
+  border-top-color: var(--border);
+}
+
+dialog.admin-dialog::backdrop {
+  background: color-mix(in oklch, var(--background) 70%, transparent);
+  backdrop-filter: blur(6px);
+}
